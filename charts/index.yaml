@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  nginx:
+  - apiVersion: v2
+    appVersion: 0.0.42
+    created: "2022-12-15T16:10:02.485687-08:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.3.x
+    description: A Helm chart for Kubernetes
+    digest: 838793fc9a068b9595179b8bae163f8c18c66733c8b6868cc33cd62b252c993e
+    name: nginx
+    type: application
+    urls:
+    - https://chris530.github.io/charts/nginx/nginx-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-12-15T16:10:02.480707-08:00"
