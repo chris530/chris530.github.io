@@ -33,7 +33,7 @@ spec:
         name: nginx
         ports:
         - containerPort: 80
-          protocol: HTTP
+          protocol: TCP
           name: http
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
