@@ -79,7 +79,8 @@ labels: {}
 # Annotations to apply to all resources
 annotations: {}
 
-nodeSelector: {}
+nodeSelector:
+  app: istio-gateway
 
 tolerations: []
 
