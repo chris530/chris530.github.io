@@ -28,7 +28,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: {{ .Values.image quote }}
+      - image: {{ .Values.image }}
         imagePullPolicy: Always
         name: nginx
         ports:
