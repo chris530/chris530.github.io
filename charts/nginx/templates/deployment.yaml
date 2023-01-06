@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx1
+    app: nginx
     version: v1
   name: nginx1
   namespace: web
@@ -11,13 +11,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx1
+      app: nginx
       version: v1
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: nginx1
+        app: nginx
         version: v1
     spec:
       containers:
@@ -35,7 +35,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx2
+    app: nginx
     version: v2
   name: nginx2
   namespace: web
@@ -43,13 +43,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx2
+      app: nginx
       version: v2
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: nginx2
+        app: nginx
         version: v2
     spec:
       containers:
