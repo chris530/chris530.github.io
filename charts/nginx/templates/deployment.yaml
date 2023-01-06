@@ -3,27 +3,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx
+    app: nginx1
     version: v1
-  name: nginx
+  name: nginx1
   namespace: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: nginx1
       version: v1
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: nginx
+        app: nginx1
         version: v1
     spec:
       containers:
-      - image: {{ .Values.image }}
+      - image: nginx
         imagePullPolicy: Always
-        name: nginx
+        name: nginx1
         ports:
         - containerPort: 80
           protocol: TCP
@@ -35,27 +35,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx
+    app: nginx2
     version: v2
-  name: nginx-v2
+  name: nginx2
   namespace: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: nginx2
       version: v2
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: nginx
+        app: nginx2
         version: v2
     spec:
       containers:
-      - image: {{ .Values.image }}
+      - image: nginx
         imagePullPolicy: Always
-        name: nginx
+        name: nginx2
         ports:
         - containerPort: 80
           protocol: TCP
