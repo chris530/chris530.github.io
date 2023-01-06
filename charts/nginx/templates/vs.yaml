@@ -19,10 +19,6 @@ spec:
           host: nginx.web.svc.cluster.local
           subset: v2
         weight: 100
-        headers:
-          response:
-             add:
-                hello: world
 status: {}
 ---
 kind: DestinationRule
