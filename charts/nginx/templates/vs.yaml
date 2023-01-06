@@ -13,11 +13,11 @@ spec:
       - destination:
           host: nginx.web.svc.cluster.local
           subset: v1
-        weight: 100
+        weight: 75
       - destination:
           host: nginx.web.svc.cluster.local
           subset: v2
-        weight: 0
+        weight: 25
 ---
 kind: DestinationRule
 apiVersion: networking.istio.io/v1alpha3
