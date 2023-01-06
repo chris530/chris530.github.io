@@ -19,7 +19,6 @@ spec:
           host: nginx.web.svc.cluster.local
           subset: v2
         weight: 100
-status: {}
 ---
 kind: DestinationRule
 apiVersion: networking.istio.io/v1alpha3
