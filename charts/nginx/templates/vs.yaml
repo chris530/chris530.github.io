@@ -3,6 +3,7 @@ kind: VirtualService
 apiVersion: networking.istio.io/v1alpha3
 metadata:
   name: nginx
+  namespace: web
 spec:
   gateways:
   - istio-system/gateway
@@ -13,11 +14,16 @@ spec:
       - destination:
           host: nginx.web.svc.cluster.local
           subset: v1
-        weight: 70
+        weight: 0
       - destination:
           host: nginx.web.svc.cluster.local
           subset: v2
-        weight: 20
+        weight: 100
+        headers:
+          response:
+             add:
+                hello: world
+status: {}
 ---
 kind: DestinationRule
 apiVersion: networking.istio.io/v1alpha3
