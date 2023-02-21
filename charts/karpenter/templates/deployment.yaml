@@ -178,14 +178,6 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
@@ -193,14 +185,4 @@ spec:
       {{- with .Values.extraVolumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- if .Values.topologySpreadConstraints }}
-      topologySpreadConstraints:
-        {{- range $constraint := .Values.topologySpreadConstraints }}
-        -
-        {{- toYaml $constraint | nindent 10 }}
-          labelSelector:
-            matchLabels:
-            {{- include "karpenter.selectorLabels" $ | nindent 14 -}}
-        {{- end }}
       {{- end }}

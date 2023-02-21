@@ -12,13 +12,13 @@ spec:
     path: charts/karpenter
     helm:
       parameters:
-      - name: settings.aws.clusterName
+      - name: clusterName
         value: chris
-      - name: settings.aws.defaultInstanceProfile
+      - name: aws.defaultInstanceProfile
         value: KarpenterNodeInstanceProfile
       - name: iamrole
         value: arn:aws:iam::571804045559:role/karpenter-controller-chris
-      - name: settings.aws.clusterEndpoint
+      - name: clusterEndpoint
         value: "https://60EFE21AD7BEF932C07F9050F1E9428A.gr7.us-east-1.eks.amazonaws.com"
   destination:
     server: https://kubernetes.default.svc
