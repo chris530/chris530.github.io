@@ -1,0 +1,11 @@
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: default
+  namespace: karpanter
+spec:
+  subnetSelector:
+    kubernetes.io/cluster/chris: "owned"
+  securityGroupSelector:
+    kubernetes.io/cluster/chris: "owned"
+  instanceProfile: chris2023022103033855740000000d

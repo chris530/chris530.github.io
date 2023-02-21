@@ -1,0 +1,30 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: default
+  namespace: karpenter
+spec:
+  labels:
+    type: karpenter
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["spot"]
+    - key: "node.kubernetes.io/instance-type"
+      operator: In
+      values: ["c5.large", "m5.large", "m5.xlarge"]
+  providerRef:
+    name: default
+---
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: default
+  namespace: karpanter
+spec:
+  subnetSelector:
+    kubernetes.io/cluster/chris: "owned"
+  securityGroupSelector:
+    kubernetes.io/cluster/chris: "owned"
+  instanceProfile: blah
+
