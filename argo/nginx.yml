@@ -1,25 +1,17 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
-  namespace: argocd
+  name: hooks-test
 spec:
-  project: default
-  source:
-    repoURL: git@github.com:chris530/chris530.github.io.git
-    targetRevision: HEAD
-    path: charts/nginx
   destination:
     server: https://kubernetes.default.svc
-    namespace: web
+    namespace: default
+  source:
+    repoURL: https://github.com/chris530/chris530.github.io
+    path: kustomize/hooks-test/overlays/test
+    targetRevision: HEAD
+  project: default
   syncPolicy:
-    retry:
-      limit: 2
     automated:
-        prune: true 
-        selfHeal: true
-        allowEmpty: false
-    syncOptions:
-      - CreateNamespace=true
-      - Replace=true
+      prune: true
+      selfHeal: true
