@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: sleep
+  name: sleep
+  namespace: default
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  containers:
+  - command:
+    - sleep 30
+    image: busybox
+    imagePullPolicy: Always
+    name: busybox
+    resources: {}
