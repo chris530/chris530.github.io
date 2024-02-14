@@ -12,9 +12,7 @@ metadata:
 spec:
   containers:
   - command:
-    - curl
-    -  -- 
-    - https://raw.githubusercontent.com/chris530/chris530.github.io/main/kustomize/hooks-test
+    - -- -L google.com 
     image: curlimages/curl
     imagePullPolicy: Always
     name: curl
