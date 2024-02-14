@@ -11,9 +11,11 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   containers:
-  - command:
-    - -- -L google.com 
+  - args:
+    - google.com
+    - -L
     image: curlimages/curl
     imagePullPolicy: Always
     name: curl
     resources: {}
+  restartPolicy: Never
