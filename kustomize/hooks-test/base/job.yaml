@@ -2,20 +2,26 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: curl
-  name: curl
+    app: readytest
+  name: readytest
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
     argocd.argoproj.io/sync-wave: "1"
 spec:
+  serviceAccount: argoperms
   containers:
-  - args:
-    - google.com
-    - -L
-    image: curlimages/curl
-    imagePullPolicy: Always
-    name: curl
-    resources: {}
+  - name: readytest
+    image: ubuntu
+    command: ["/bin/bash"]
+    args:
+    - "/mnt/readytest.sh"
+    volumeMounts:
+    - name: script
+      mountPath: /mnt
+  volumes:
+  - name: script
+    configMap:
+      name: readytest
   restartPolicy: Never

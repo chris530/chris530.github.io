@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: readytest
+  namespace: default
+data:
+  readytest.sh: |
+    #!/bin/bash
+
+    apt update
+    apt install -y curl 
+
+    # Get the token from the service account
+    TOKEN=$(cat /run/secrets/kubernetes.io/serviceaccount/token)
+
+    CONFIGMAP="argoready"
+    NAMESPACE="default"
+
+    # Make a call to the Kubernetes API
+    RESPONSE=$(curl -s -k -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" https://kubernetes.default.svc:443/api/v1/namespaces/$NAMESPACE/configmaps/$CONFIGMAP)
+
+
+    # Check if "READY" is present in the response
+    if [[ "$RESPONSE" == *"READY"* ]]; then
+        echo "Ready was found"
+        exit 0
+    else
+        echo "Ready was not found"
+        exit 1
+    fi
+  type: text/x-shellscript  # Specifies executable permissions for the script
