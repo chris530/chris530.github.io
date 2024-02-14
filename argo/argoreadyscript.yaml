@@ -9,7 +9,7 @@ spec:
     namespace: default
   source:
     repoURL: https://github.com/chris530/chris530.github.io
-    path: kustomize/rbac/overlays/rbac
+    path: kustomize/rbac/base/rbac
     targetRevision: HEAD
   project: default
   syncPolicy:
