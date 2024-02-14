@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: sleep
-  name: sleep
+    app: curl
+  name: curl
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PreSync
@@ -12,8 +12,10 @@ metadata:
 spec:
   containers:
   - command:
-    - sleep 30
-    image: busybox
+    - curl
+    -  -- 
+    - https://raw.githubusercontent.com/chris530/chris530.github.io/main/kustomize/hooks-test
+    image: curlimages/curl
     imagePullPolicy: Always
-    name: busybox
+    name: curl
     resources: {}
